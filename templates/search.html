@@ -1,0 +1,132 @@
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+<title>Book Recommender System</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="{{url_for("static",filename = "main.css")}}" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7/themes/algolia-min.css">
+<script src="https://cdn.jsdelivr.net/algoliasearch/3.32.0/algoliasearchLite.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@3.2.1"></script>
+<noscript><link rel="stylesheet" href="{{url_for("static",filename = "noscript.css")}}"/></noscript>
+<link rel="stylesheet" href="{{url_for("static",filename = "app.css")}}" />
+</head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 33.33%;
+  padding: 5px;
+}
+</style>
+<body class="is-preload">
+	<!-- <script type="text/javascript">
+func
+	</script> -->
+			<!-- Wrapper -->
+<div id="wrapper">
+
+				<!-- Header -->
+<header id="header">
+<div class="inner">
+							<!-- Logo -->
+<a href="index.html" class="logo">
+<span class="symbol"><img src="{{url_for("static",filename = "images/livres.jpeg")}}" alt="" /></span><span class="title">Books</span>
+								</a>
+							<!-- Nav -->
+	<nav>
+		<ul>
+			<li><a href="#menu">Menu</a></li>
+		</ul>
+	</nav>
+
+	</div>
+</header>
+<div class="container">
+  <div class="search-panel">
+    <div class="search-panel__results">
+      <div id="searchbox"></div>
+      <div id="hits"></div>
+    </div>
+	</div>
+
+  <div id="pagination"></div>
+</div>
+
+<nav id="menu">
+<h2>Menu</h2>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li>Best Seller</li>
+</ul>
+</nav>
+<div id="main">
+
+<div class="inner">
+	<span class = "image">
+<img id = "img1" src="" alt="" />
+</span>
+<form class="" action="/recommend" method="post">
+<textarea type="text" rows="1" cols="1" class="form-control"  name="rawtext" ></textarea>
+<br/>
+	<button class ="button fit" type="submit" name="button">Recommend</button>
+</form>
+{% for l in first %}
+<img  src="{{ l.image_url }}" alt="" />
+	<h6><span style = color:black >TITLE: </span>{{ l.title }}</h6>
+	<h6><span style = color:black >AUTHOR: </span>{{ l.author }}</h6>
+<h3><span style = color:red;>Similar Books:</span></h3>
+	{% endfor %}
+	<div class="row">
+	{% for post in plist1 %}
+	<div class="column">
+	<img src="{{ post.image_url }}" alt="">
+			 <h5>{{ post.title }}</h5>
+				</div>
+	{% endfor %}
+</div>
+<div class="row">
+
+		{% for post in plist2 %}
+		<div class="column">
+		<img src="{{ post.image_url }}" alt="">
+				 <h5>{{ post.title }}</h5>
+				 </div>
+		{% endfor %}
+	</div>
+<div class="row">
+
+			{% for post in plist3 %}
+			<div class="column">
+			<img src="{{ post.image_url }}" alt="">
+					 <h5>{{ post.title }}</h5>
+					 </div>
+			{% endfor %}
+	</div>
+
+</div>
+</div>
+
+<footer id="footer">
+<div class="inner">
+
+<ul class="copyright">
+<li>&copy; Untitled. All rights reserved</li>
+</ul>
+</div>
+</footer>
+</div>
+<script type="text/javascript"src = "{{ url_for('static',filename = "connector.js")}}"></script>
+<script type="text/javascript"src = "{{ url_for('static',filename = "app.js")}}"></script>
+{% assets "main_js" %}
+<script type="text/javascript" src = "{{ ASSET_URL }}"></script>
+{% endassets %}
+</body>
+
+</html>

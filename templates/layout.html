@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>My heading</title>
+    <link rel="stylesheet" href="{{url_for("static",filename = "main.css")}}" />
+    <noscript><link rel="stylesheet" href="{{url_for("static",filename = "noscript.css")}}"/></noscript>
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+  </head>
+  <body class = "is-preloaded">
+    <div id="wrapper">
+
+ <header id="header">
+ <div class="inner">
+ <a href="index.html" class="logo">
+ <span class="symbol"><img src="{{url_for("static",filename = "images/livres.jpeg")}}" alt="" /></span><span class="title">Books</span>
+ 								</a>
+
+ 	<nav>
+ 		<ul>
+ 			<li><a href="#menu">Menu</a></li>
+ 		</ul>
+ 	</nav>
+ 	</div>
+ </header>
+
+ <nav id="menu">
+ <h2>Menu</h2>
+ <ul>
+ <li><a href="index.html">Home</a></li>
+ <li>Best Seller</li>
+ 							<!-- <li><a href="generic.html">Ipsum veroeros</a></li> -->
+ </ul>
+ </nav>
+ <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script> -->
+    {% block content%}
+    {% endblock %}
+    {% assets "main_js" %}
+    <script type="text/javascript" src = "{{ ASSET_URL }}"></script>
+    {% endassets %}
+  </body>
+</html>
